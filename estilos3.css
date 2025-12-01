@@ -1,0 +1,225 @@
+ *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background: linear-gradient(180deg,#15264c 0%, #0c1849 60%);
+      color:#e6eef8;
+      line-height:1.35;
+      -webkit-font-smoothing:antialiased;
+      display:flex;flex-direction:column;min-height:100vh;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+
+    header{
+      display:flex;align-items:center;gap:1rem;padding:1rem 1.5rem;background-color: #2552ce;backdrop-filter: blur(6px);
+    }
+    .logo{
+      display:flex;align-items:center;gap:.75rem;text-decoration:none;color:inherit
+    }
+    .logo svg{width:56px;height:56px;flex-shrink:0}
+    .brand{font-weight:700;font-size:1.35rem;letter-spacing:.6px}
+    .brand small{display:block;font-weight:500;font-size:.7rem;color:#bcd1ff}
+
+
+    nav{display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;background-color: #1c2b7a;}
+    .nav-list{display:flex;gap:.6rem;flex-wrap:wrap}
+    .nav-list a{padding:.5rem .7rem;border-radius:8px;text-decoration:none;color:#dfefff;font-weight:600;font-size:.92rem;transition:transform .2s,background .2s}
+    .nav-list a:hover{transform:translateY(-3px);background-color: #07ba22;}
+
+  
+    .container{display:grid;grid-template-columns:1fr 320px;gap:1.25rem;padding:1.25rem;flex:1}
+
+
+    main{min-width:0}
+    .hero{
+      background:linear-gradient(180deg, rgba(7,16,51,0.5), rgba(2,6,23,0.3));padding:1rem;border-radius:14px;overflow:hidden;margin-bottom:1rem
+    }
+
+
+    .carousel{position:relative;overflow:hidden;border-radius:12px}
+    .slides{display:flex;width:100%;transition:transform .8s ease;
+      animation: slideAnim 16s infinite;}
+
+    @keyframes slideAnim{
+      0%   {transform:translateX(0%)}
+      20%  {transform:translateX(0%)}
+      25%  {transform:translateX(-100%)}
+      45%  {transform:translateX(-100%)}
+      50%  {transform:translateX(-200%)}
+      70%  {transform:translateX(-200%)}
+      75%  {transform:translateX(-300%)}
+      95%  {transform:translateX(-300%)}
+      100% {transform:translateX(0%)}
+    }
+
+
+    .carousel:hover .slides{animation-play-state:paused}
+
+    .slide{min-width:100%;display:block}
+    .slide img{width:100%;display:block;height:340px;object-fit:cover;filter:contrast(1.03) saturate(1.05)}
+
+    input[type="radio"]{display:none}
+
+    #s1:checked ~ .stage .slides{transform:translateX(0%);animation-play-state:paused}
+    #s2:checked ~ .stage .slides{transform:translateX(-25%);animation-play-state:paused}
+    #s3:checked ~ .stage .slides{transform:translateX(-50%);animation-play-state:paused}
+    #s4:checked ~ .stage .slides{transform:translateX(-75%);animation-play-state:paused}
+
+ 
+    .controls{position:absolute;left:0;right:0;top:45%;display:flex;justify-content:space-between;padding:0 0.5rem}
+    .ctrl{background:rgba(3,7,23,0.45);backdrop-filter:blur(4px);border-radius:50%;width:38px;height:38px;display:grid;place-items:center;color:#e6f0ff;text-decoration:none;font-weight:700;border:1px solid rgba(255,255,255,0.06)}
+    .dots{position:absolute;left:50%;transform:translateX(-50%);bottom:8px;display:flex;gap:8px}
+    .dots label{width:11px;height:11px;border-radius:50%;display:block;cursor:pointer;background:rgba(255,255,255,0.18);box-shadow:0 2px 6px rgba(0,0,0,0.45)}
+    /* cambiar punto activo según animación no es posible sin JS, pero cuando el usuario clickea un radio se muestra */
+    #s1:checked ~ .dots label[for="s1"],#s2:checked ~ .dots label[for="s2"],#s3:checked ~ .dots label[for="s3"],#s4:checked ~ .dots label[for="s4"]{background:linear-gradient(90deg,#6dd3ff,#845ef7)}
+
+
+    .catalog{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:1rem}
+    .product{background-color: #07ba22;padding:1rem;border-radius:12px;display:flex;gap:1rem;align-items:flex-start;transition:transform .18s}
+    .product:hover{transform:translateY(-6px)}
+    .product img{width:96px;height:72px;object-fit:cover;border-radius:8px;flex-shrink:0}
+    .p-info{flex:1}
+    .p-title{font-weight:700;font-size:0.98rem}
+    .p-desc{font-size:.86rem;color:#cfe3ff;margin:.35rem 0}
+    .p-price{font-weight:800;color:#9be7ff}
+
+    aside{background:linear-gradient(180deg, rgba(29, 83, 192, 0.6), rgba(37, 71, 196, 0.4));padding:1rem;border-radius:12px;height:fit-content}
+    .promo{display:flex;flex-direction:column;gap:.6rem}
+    .promo-item{background:linear-gradient(90deg,#2552ce, rgba(170, 61, 180, 0.02));padding:.6rem;border-radius:10px}
+    .small{font-size:.8rem;color:#b9d6ff}
+
+
+    footer{padding:1rem;background-color: #2552ce ;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+    .socials{display:flex;gap:.6rem}
+    .socials a{padding:.45rem .6rem;border-radius:8px;background-color: #1c2b7a;text-decoration:none;color:#d7ecff;font-weight:700}
+
+    @media (max-width:980px){
+      .container{grid-template-columns:1fr 280px}
+      .product img{width:88px;height:64px}
+    }
+    @media (max-width:820px){
+      header{padding:.8rem}
+      .container{grid-template-columns:1fr;}
+      aside{order:2;margin-top:1rem}
+      .catalog{grid-template-columns:1fr}
+      .slide img{height:220px}
+    }
+
+
+    @keyframes floaty{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
+    .brand{animation:floaty 4s ease-in-out infinite}
+    .product img{animation:floaty 6s ease-in-out infinite}
+
+    a:focus,label:focus{outline:2px dashed rgba(131,164,255,0.55);outline-offset:3px}
+    producto-lista {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+gap: 20px;
+}
+@keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
+
+
+.autor-box {
+background: linear-gradient(135deg, #0d47a1, #6dd3ff, #07ba22);
+padding: 5%;
+border-radius: 15px;
+box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+display: flex;
+gap: 20px;
+align-items: center;
+margin-bottom: 30px;
+animation: fadeIn 1s ease;
+}
+
+
+.autor-box img {
+width: 1000px;
+height: 300px;
+object-fit: cover;
+border-radius: 50%;
+border: 4px solid #0d47a1;
+}
+
+
+.autor-text {
+font-size: 18px;
+line-height: 1.5;
+font-family: Arial, Helvetica, sans-serif;
+color: black;
+}
+
+
+
+.redes {
+text-align: center;
+padding: 20px;
+border-radius: 15px;
+background: linear-gradient(135deg, #0d47a1, #42a5f5, #0c1849);
+color: #bcd1ff;
+animation: fadeIn 1.2s ease;
+}
+
+
+.redes h3 { margin-bottom: 15px; }
+
+
+.icons {
+display: flex;
+justify-content: center;
+gap: 25px;
+flex-wrap: wrap;
+}
+
+
+.icons img {
+width: 60px;
+transition: .3s;
+border-radius: 10px;
+}
+.icons img:hover {
+transform: scale(1.1);
+box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+@media(max-width:700px) {
+.autor-box { flex-direction: column; text-align: center; }
+.autor-box img { width: 150px; height:150px; }
+}
+
+form {
+max-width: 450px;
+margin: auto;
+background: #07ba22;
+padding: 20px;
+border-radius: 10px;
+box-shadow: 0 0 10px cyan;
+animation: fadeInUp 1.2s ease;
+}
+label {
+display: block;
+margin-top: 12px;
+font-weight: bold;
+text-align: center;
+}
+input, select, textarea {
+width: 100%;
+padding: 10px;
+border: none;
+border-radius: 6px;
+margin-top: 5px;
+}
+button {
+width: 100%;
+margin-top: 15px;
+padding: 12px;
+background: #0c1849;
+color: white;
+border: none;
+border-radius: 8px;
+cursor: pointer;
+font-weight: bold;
+transition: 0.3s;
+}
+button:hover {
+background: #0d47a1;
+}
